@@ -1,0 +1,14 @@
+version: '3'
+services:
+  nginx:
+    image: nginx
+    container_name: nginx_rev_proxy
+    ports:
+      - 8080:80
+    volumes:
+      - ./nginx_config/conf.d:/etc/nginx/conf.d
+  nodeapp:
+    build: .
+    container_name: node_app
+    ports:
+      - 3000:3000
